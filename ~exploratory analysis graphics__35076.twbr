@@ -314,18 +314,26 @@
           </formatted-text>
         </desc>
       </column>
+      <column-instance column='[total_price]' derivation='Attribute' name='[attr:total_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[quantity]' derivation='Avg' name='[avg:quantity:qk]' pivot='key' type='quantitative' />
       <column-instance column='[total_price]' derivation='Avg' name='[avg:total_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[quantity]' derivation='Count' name='[cnt:quantity:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_price]' derivation='Max' name='[max:total_price:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[quantity]' derivation='Median' name='[med:quantity:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_price]' derivation='Median' name='[med:total_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[group_code]' derivation='None' name='[none:group_code:ok]' pivot='key' type='ordinal' />
       <column-instance column='[is_churn]' derivation='None' name='[none:is_churn:nk]' pivot='key' type='ordinal' />
       <column-instance column='[item_code]' derivation='None' name='[none:item_code:ok]' pivot='key' type='ordinal' />
       <column-instance column='[segment_code]' derivation='None' name='[none:segment_code:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[total_price]' derivation='None' name='[none:total_price:qk]' pivot='key' type='quantitative' />
+      <column-instance aggregation-param='50' column='[total_price]' derivation='Percentile' name='[prc50:total_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[quantity]' derivation='Stdev' name='[std:quantity:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_price]' derivation='Stdev' name='[std:total_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[quantity]' derivation='Sum' name='[sum:quantity:qk]' pivot='key' type='quantitative' />
       <column-instance column='[total_price]' derivation='Sum' name='[sum:total_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[unit_price]' derivation='Sum' name='[sum:unit_price:qk]' pivot='key' type='quantitative' />
       <column-instance column='[quantity]' derivation='Var' name='[var:quantity:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_price]' derivation='Var' name='[var:total_price:qk]' pivot='key' type='quantitative' />
       <_.fcp.SchemaViewerObjectModel.false...folder name='Dataset' role='dimensions'>
         <folder-item name='[Document Index (generated)]' type='field' />
         <folder-item name='[branch_id]' type='field' />
@@ -408,10 +416,16 @@
           </encoding>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
             <map to='#4e79a7'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
               <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[avg:quantity:qk]&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[cnt:quantity:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[med:quantity:qk]&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[std:quantity:qk]&quot;</bucket>
@@ -426,10 +440,31 @@
               <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[sum:unit_price:qk]&quot;</bucket>
             </map>
             <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[attr:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
               <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[avg:total_price:qk]&quot;</bucket>
             </map>
             <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[max:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[med:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[none:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[prc50:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[std:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
               <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[sum:total_price:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0j1b3310xdxobp116l5q70vyofl5].[var:total_price:qk]&quot;</bucket>
             </map>
           </encoding>
           <encoding attr='color' field='[none:item_code:ok]' type='palette'>
@@ -9394,6 +9429,61 @@
     </datasource>
   </datasources>
   <worksheets>
+    <worksheet name='Box-plot Group Code e Total Price'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='dataset' name='federated.0j1b3310xdxobp116l5q70vyofl5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0j1b3310xdxobp116l5q70vyofl5'>
+            <column aggregation='Sum' caption='Group Code' datatype='real' name='[group_code]' role='dimension' type='ordinal'>
+              <desc>
+                <formatted-text>
+                  <run>group_code</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[group_code]' derivation='None' name='[none:group_code:ok]' pivot='key' type='ordinal' />
+            <column-instance aggregation-param='50' column='[total_price]' derivation='Percentile' name='[prc50:total_price:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Price' datatype='real' name='[total_price]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>total_price</run>
+                </formatted-text>
+              </desc>
+            </column>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]'>
+            <groupfilter function='member' level='[none:group_code:ok]' member='3.0' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <lod column='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]' />
+            </encodings>
+            <reference-line axis-column='[federated.0j1b3310xdxobp116l5q70vyofl5].[prc50:total_price:qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.0j1b3310xdxobp116l5q70vyofl5].[prc50:total_price:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.25' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0j1b3310xdxobp116l5q70vyofl5].[prc50:total_price:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{7B1A5BDE-65CB-412D-94DF-C0B36EE0C56A}' />
+    </worksheet>
     <worksheet name='Group Code x Item Code'>
       <table>
         <view>
@@ -9523,6 +9613,46 @@
         <cols>[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]</cols>
       </table>
       <simple-id uuid='{D57E7BFE-8D5C-4384-BC70-27E514BCA123}' />
+    </worksheet>
+    <worksheet name='Group Code x Quantity (mean) (2)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='dataset' name='federated.0j1b3310xdxobp116l5q70vyofl5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0j1b3310xdxobp116l5q70vyofl5'>
+            <column-instance column='[quantity]' derivation='Avg' name='[avg:quantity:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Sum' caption='Group Code' datatype='real' name='[group_code]' role='dimension' type='ordinal'>
+              <desc>
+                <formatted-text>
+                  <run>group_code</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[group_code]' derivation='None' name='[none:group_code:ok]' pivot='key' type='ordinal' />
+            <column caption='Quantity' datatype='real' name='[quantity]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>quantity</run>
+                </formatted-text>
+              </desc>
+            </column>
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0j1b3310xdxobp116l5q70vyofl5].[avg:quantity:qk]</rows>
+        <cols>[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]</cols>
+      </table>
+      <simple-id uuid='{5B9EFDF8-0F2D-4ECD-8BAA-24A7601B6F60}' />
     </worksheet>
     <worksheet name='Group Code x Quantity (sum)'>
       <table>
@@ -9706,22 +9836,35 @@
       </table>
       <simple-id uuid='{62F66131-18B2-426A-B820-EFCC2B53BACE}' />
     </worksheet>
-    <worksheet name='Planilha 10'>
+    <worksheet name='Planilha 11'>
       <table>
         <view>
-          <datasources>
-            <datasource caption='dataset' name='federated.0j1b3310xdxobp116l5q70vyofl5' />
-          </datasources>
-          <datasource-dependencies datasource='federated.0j1b3310xdxobp116l5q70vyofl5'>
-            <column aggregation='Sum' caption='Group Code' datatype='real' name='[group_code]' role='dimension' type='ordinal'>
-              <desc>
-                <formatted-text>
-                  <run>group_code</run>
-                </formatted-text>
-              </desc>
-            </column>
-            <column-instance column='[group_code]' derivation='None' name='[none:group_code:ok]' pivot='key' type='ordinal' />
-          </datasource-dependencies>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.25' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{5FF6CD88-AEF1-490A-8CD9-48C58CBBA623}' />
+    </worksheet>
+    <worksheet name='Planilha 13'>
+      <table>
+        <view>
+          <datasources />
           <aggregation value='true' />
         </view>
         <style />
@@ -9734,9 +9877,9 @@
           </pane>
         </panes>
         <rows />
-        <cols>[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]</cols>
+        <cols />
       </table>
-      <simple-id uuid='{7B1A5BDE-65CB-412D-94DF-C0B36EE0C56A}' />
+      <simple-id uuid='{5A7A1BC0-B0AD-47EC-BA68-24B4C9435C9E}' />
     </worksheet>
     <worksheet name='Segment Code x Quantity (mean)'>
       <table>
@@ -9925,120 +10068,6 @@
     </worksheet>
   </worksheets>
   <windows source-height='30'>
-    <window class='worksheet' name='Group Code x Quantity (sum)'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:is_churn:nk]' type='filter' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='170'>
-            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]' type='color' />
-            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[sum:quantity:qk]' type='size' />
-          </strip>
-        </edge>
-      </cards>
-      <viewpoint>
-        <zoom type='entire-view' />
-      </viewpoint>
-      <simple-id uuid='{A73D4573-FF57-47FE-8321-8BA0ADC38000}' />
-    </window>
-    <window class='worksheet' name='Group Code x Quantity (mean)'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{313A7276-1E71-4B2A-8044-57BECBA0B1A6}' />
-    </window>
-    <window class='worksheet' name='Segment Code x Quantity (sum)'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:is_churn:nk]' type='filter' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='170'>
-            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[sum:quantity:qk]' type='color' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{7556CF58-3DC4-4891-852E-ACAF88DC3723}' />
-    </window>
-    <window class='worksheet' name='Segment Code x Quantity (mean)'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:is_churn:nk]' type='filter' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='170'>
-            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:segment_code:ok]' type='color' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{4693AE33-C8A0-430B-8C01-C7C7965060DB}' />
-    </window>
     <window class='worksheet' name='Group Code x Total Price (sum)'>
       <cards>
         <edge name='left'>
@@ -10100,6 +10129,167 @@
       </cards>
       <simple-id uuid='{074CE4FD-BDC8-4095-A9D3-82381660D95F}' />
     </window>
+    <window class='worksheet' maximized='true' name='Box-plot Group Code e Total Price'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]' type='filter' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{69D8599B-5860-4D5B-8850-3D76EEE12852}' />
+    </window>
+    <window class='worksheet' name='Group Code x Quantity (sum)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:is_churn:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:group_code:ok]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[sum:quantity:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{A73D4573-FF57-47FE-8321-8BA0ADC38000}' />
+    </window>
+    <window class='worksheet' name='Group Code x Quantity (mean)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{313A7276-1E71-4B2A-8044-57BECBA0B1A6}' />
+    </window>
+    <window class='worksheet' name='Group Code x Quantity (mean) (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5F763179-8D7C-4C21-93AA-7A98FFE9EA01}' />
+    </window>
+    <window class='worksheet' name='Segment Code x Quantity (sum)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:is_churn:nk]' type='filter' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[sum:quantity:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7556CF58-3DC4-4891-852E-ACAF88DC3723}' />
+    </window>
+    <window class='worksheet' name='Segment Code x Quantity (mean)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card mode='radiolist' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:is_churn:nk]' type='filter' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card pane-specification-id='0' param='[federated.0j1b3310xdxobp116l5q70vyofl5].[none:segment_code:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{4693AE33-C8A0-430B-8C01-C7C7965060DB}' />
+    </window>
     <window class='worksheet' name='Segment Code x Total Price (sum)'>
       <cards>
         <edge name='left'>
@@ -10146,7 +10336,7 @@
       </cards>
       <simple-id uuid='{74A81F38-8AB1-4CC1-9439-5C91EA55E083}' />
     </window>
-    <window class='worksheet' maximized='true' name='Group Code x Item Code'>
+    <window class='worksheet' name='Group Code x Item Code'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -10175,7 +10365,7 @@
       </cards>
       <simple-id uuid='{BBC4C491-3DA9-48C7-AA5D-06B12C9F2D2A}' />
     </window>
-    <window class='worksheet' name='Planilha 10'>
+    <window class='worksheet' name='Planilha 11'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -10196,7 +10386,30 @@
           </strip>
         </edge>
       </cards>
-      <simple-id uuid='{69D8599B-5860-4D5B-8850-3D76EEE12852}' />
+      <simple-id uuid='{4DBE4E02-5F5E-487F-8E1B-98D5CDD669FB}' />
+    </window>
+    <window class='worksheet' name='Planilha 13'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D154620B-76D4-428B-B98C-6D15C9DDCDA0}' />
     </window>
   </windows>
 </workbook>
